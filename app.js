@@ -16,7 +16,7 @@ app.use('/', musicRoute);
 const voteRoute = require('./routes/voteRoute');
 app.use('/', voteRoute);
 
-const resultRoute =require('.routes/resultRoute');
+const resultRoute =require('./routes/resultRoute');
 app.use('/', resultRoute);
 
 

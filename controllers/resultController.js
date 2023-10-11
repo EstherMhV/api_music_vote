@@ -3,36 +3,34 @@ const Result = require('../models/resultModel');
 
 exports.listAllVotes = async (req,res) => {
     try {
-        const votes = await Results.find({post_vote: req.params.id_vote});
-        res.status(200);
-        res.json(results);
+        const results = await Result.find({post_vote: req.params.id_vote});
+        res.status(200).json(results);
     }
     catch (error) {
         res.status(500);
-        console.log(error);
+        console.error(error);
         res.json({ message:'Erreur serveur'});
     }
 }
 
-exports.createAResult = async (req, res) => {
+// exports.createAResult = async (req, res) => {
+//     try {
+//         const result = await Result.findById(req.params.id_vote);
+//         const newResult = new Result({...req.body, vote_id: req.params.id_vote});
 
-    try {
-        const result = await Result.findById(req.params.id_vote);
-        const newResult = new Vote({...req.body,music_id: req.params.id_music});
+//         try {
+//             const vote = await newResult.save();
+//             res.status(200).json(result);
+//         }
+//         catch (error) {
+//             res.status(500);
+//             console.error(error);
+//             res.json({ message: 'Erreur serveur (DB issue)' });
+//         }
+//     }
+//     catch(error) {
+//         console.error(error);
+//         res.json({ message: 'Erreur serveur (Incirrect vote_id)' });
+//     }
+// }
 
-
-        try{
-            const vote = await newVote.save();
-            res.status(200);
-            res.json(vote);
-        }
-        catch (error) {
-            res.status(500);
-            console.log(error);
-            res.json({ message: 'Erreur serveur(db)' });
-        }
-    }catch(error){
-        console.log(error);
-        res.json({ message: 'Erreur serveur(music_id inexistant' });
-    }
-}
