@@ -3,13 +3,14 @@ const router = express.Router();
 const resultController = require('../controllers/resultController');
 
 router
-    .route('/music/:id_music/vote/result')
+    .route('/vote/:id_vote/result')
     .get(resultController.listAllResults)
 
 
 router
-    .route('/vote/:id_vote/result')
+    .route('/result/:id_result')
     .get(resultController.getAResult)
+
 
 
 
