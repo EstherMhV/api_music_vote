@@ -1,16 +1,16 @@
 const express = require('express');
 const router = express.Router();
-const commentController = require('../controllers/voteController');
+const voteController = require('../controllers/voteController');
 
 router
-    .route('/musics/:id_music/votes')
-    .get(commentController.listAllComments)
-    .post(commentController.createAComment)
+    .route('/music/:id_music/vote')
+    .get(voteController.listAllVotes)
+    .post(voteController.createAVote)
 
 router
-    .route('/votes/:id_vote')
-    .get(commentController.getAComment)
-    .put(commentController.updateAComment)
-    .delete(commentController.deleteAComment)
+    .route('/vote/:id_vote')
+    .get(voteController.getAVote)
+    .put(voteController.updateAVote)
+    .delete(voteController.deleteAVote)
 
 module.exports = router;
