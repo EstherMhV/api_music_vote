@@ -3,7 +3,9 @@ const router = express.Router();
 const resultController = require('../controllers/resultController');
 
 router
-    .route('/vote/:id_vote/result')
+
+    .route('/votes/result')
+
     .get(resultController.listAllResults)
 
 
