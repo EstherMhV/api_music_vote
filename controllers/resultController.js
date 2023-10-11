@@ -3,16 +3,16 @@ const Result = require('../models/resultModel');
 
 exports.listAllVotes = async (req,res) => {
     try {
-        const votes = await Results.find({post_vote: req.params.id_vote});
-        res.status(200);
-        res.json(results);
+        const results = await Result.find({post_vote: req.params.id_vote});
+        res.status(200).json(results);
     }
     catch (error) {
         res.status(500);
-        console.log(error);
+        console.error(error);
         res.json({ message:'Erreur serveur'});
     }
 }
+
 
 exports.createAResult = async (req, res) => {
 
@@ -62,3 +62,5 @@ exports.ModifyResult = async (req, res) => {
         }
    }
 }
+
+
