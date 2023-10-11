@@ -12,4 +12,4 @@ let resultSchema = new Schema({
 
 })
 
-module.exports = mongoose.model('Result', voteSchema)
+module.exports = mongoose.model('Result', resultSchema)
