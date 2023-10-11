@@ -14,7 +14,7 @@ router
 router
     .route('/music/:id_music')
     .get(musicController.getAMusic)
-    // .put(musicController.updateAMusic)
-    // .delete(musicController.deleteAMusic)
+    .put(musicController.updateAMusic)
+    .delete(musicController.deleteAMusic)
 
 module.exports = router;
