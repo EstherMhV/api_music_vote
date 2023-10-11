@@ -10,7 +10,7 @@ mongoose.connect('mongodb://0.0.0.0:27017/apimusic');
 app.use(express.urlencoded());
 app.use(express.json());
 
-const musicRoute =require('.routes/musicRoute');
+const musicRoute = require('./routes/musicRoute.js');
 app.use('/', musicRoute);
 
 // const voteRoute =require('.routes/voteRoute');

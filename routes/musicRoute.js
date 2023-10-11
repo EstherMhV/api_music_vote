@@ -6,7 +6,7 @@ const musicController = require('../controllers/musicController');
 
 router
     .route('/music')
-    .get(musicController.music.listAllMusic)
+    .get(musicController.listAllMusics)
     .post(musicController.createAMusic) 
 
 // ROUTE DE BASE POUR LES ID

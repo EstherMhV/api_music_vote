@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 let musicSchema = new Schema({
     url: {
-        type: 'varchar',
+        type: 'string',
         required: true 
     },
     last_name:{
@@ -15,7 +15,8 @@ let musicSchema = new Schema({
         required: true
     },
     submit_date:{
-        type: 'datetime',
+        type: Date, 
+        default: Date.now,
         required: true
     }
 })
