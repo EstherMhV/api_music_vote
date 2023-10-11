@@ -3,9 +3,9 @@ const Music = require('../models/musicModel');
 
 exports.listAllVotes = async (req,res) => {
     try {
-        const comments = await Comment.find({post_id: req.params.id_post});
+        const votes = await Votes.find({post_music: req.params.id_music});
         res.status(200);
-        res.json(comments);
+        res.json(votes);
     }
     catch (error) {
         res.status(500);
@@ -15,17 +15,17 @@ exports.listAllVotes = async (req,res) => {
 }
 
 
-exports.createAComment = async (req, res) => {
+exports.createAVote = async (req, res) => {
 
     try {
-        const post = await Post.findById(req.params.id_post);
-        const newCommment = new Comment({...req.body, post_id: req.params.id_post});
+        const vote = await Vote.findById(req.params.id_music);
+        const newVote = new Vote({...req.body,music_id: req.params.id_music});
 
 
         try{
-            const comment = await newCommment.save();
+            const vote = await newVote.save();
             res.status(200);
-            res.json(comment);
+            res.json(vote);
         }
         catch (error) {
             res.status(500);
@@ -34,14 +34,14 @@ exports.createAComment = async (req, res) => {
         }
     }catch(error){
         console.log(error);
-        res.json({ message: 'Erreur serveur(post-id inexistant' });
+        res.json({ message: 'Erreur serveur(music_id inexistant' });
     }
 }
 
-exports.updateAComment = async(req, res) =>{
+exports.updateAVote = async(req, res) =>{
     try{
-        const comment = await Comment.findByIdAndUpdate(req.params.id_post, req.body, {new: true});
-        if(!comment){
+        const vote = await Vote.findByIdAndUpdate(req.params.id_music, req.body, {new: true});
+        if(!vote){
             res.status(204)
             console.log(error);
             res.json({ message : 'id not found'});
@@ -50,7 +50,7 @@ exports.updateAComment = async(req, res) =>{
 
         }
         res.status(200);
-        res.json(comment);
+        res.json(vote);
     }
     catch(error){
         res.status(500);
@@ -59,10 +59,10 @@ exports.updateAComment = async(req, res) =>{
     }
 }
 
-exports.deleteAComment = async(req, res) =>{
+exports.deleteAVote = async(req, res) =>{
 
     try{
-        const comment = await Comment.findByIdAndDelete(req.params.id_post, req.body, {new: true});
+        const vote = await Vote.findByIdAndDelete(req.params.id_music, req.body, {new: true});
         res.status(200);
         res.json({ message : 'Supprimé'});
     }
@@ -73,12 +73,12 @@ exports.deleteAComment = async(req, res) =>{
     }
 }
 
-exports.getAComment = async(req, res) =>{
+exports.getAVote = async(req, res) =>{
 
     try{
-        const comment =await Comment.findById(req.params.id_post);
+        const vote =await Vote.findById(req.params.id_music);
         res.status(200);
-        res.json(comment);
+        res.json(vote);
     }
     catch(error){
         res.status(500);
