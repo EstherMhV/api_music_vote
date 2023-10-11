@@ -48,6 +48,7 @@ exports.deleteAMusic = async (req, res) => {
         const music = await Music.findByIdAndDelete(req.params.id_music, req.body, { new: true });
         res.status(200);
         res.json({ message: 'Supprimé' });
+        
 
     }
     catch (error) {
